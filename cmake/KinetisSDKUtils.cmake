@@ -18,7 +18,7 @@ macro(DetectKinetisSDK)
   file(GLOB _MCU_LIST_DIR ${SDK_ROOT}/devices/*)
   foreach (_MCU_DIR ${_MCU_LIST_DIR})
     get_filename_component(_MCU ${_MCU_DIR} NAME)
-    message(STATUS "Found MCU: ${_MCU}")
+    message(STATUS "Supported MCU: ${_MCU}")
     LIST(APPEND _MCU_LIST "${_MCU}")
   endforeach ()
 

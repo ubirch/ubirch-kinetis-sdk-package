@@ -16,12 +16,12 @@ AddKinetisMiddlewareMMCAU()
 set(KinetisSDK_VERSION 2.0)
 
 # export the target ksdk20 from within the build tree, creating a config file
-export(TARGETS ${KSDK_TARGETS} FILE KinetisSDK${CMAKE_BUILD_TYPE}Config.cmake)
+export(TARGETS ${KSDK_TARGETS} FILE KinetisSDKConfig.cmake)
 
 # create a config version file
 include(CMakePackageConfigHelpers)
 write_basic_package_version_file(
-  "${CMAKE_CURRENT_BINARY_DIR}/KinetisSDK${CMAKE_BUILD_TYPE}ConfigVersion.cmake"
+  "${CMAKE_CURRENT_BINARY_DIR}/KinetisSDKConfigVersion.cmake"
   VERSION ${KinetisSDK_VERSION}
   COMPATIBILITY AnyNewerVersion
 )
