@@ -1,6 +1,6 @@
 # ubirch Kinetis SDK package
 
-This is a [CMake](https://cmake.org) package for the [Kinetis SDK](kex.freescale.com/en/). it
+This is a [CMake](https://cmake.org) package for the [Kinetis SDK](kex.freescale.com/en/). It
 creates the a Kinetis SDK library target as well as targets for some of the middleware found
 in the SDK. Packages can then be found by other CMake projects using `find_package()`.
 
