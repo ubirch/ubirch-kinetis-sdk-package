@@ -2,9 +2,13 @@
 TOOLCHAIN=../ubirch-arm-toolchain/cmake/ubirch-arm-gcc-toolchain.cmake
 SDK_NAME=SDK_2.0_MK82FN256xxx15
 MCU=MK82F25615
+if [ "$1" == "-a" ]
+then BUILDS="Debug Release MinSizeRel RelWithDebInfo"
+else BUILDS=MinSizeRel
+fi
 # do an out-of-source build for all configurations
 [ -d build ] && rm -r build
-for BUILD_TYPE in Debug Release MinSizeRel RelWithDebInfo
+for BUILD_TYPE in $BUILDS
 do
   (mkdir -p build/$BUILD_TYPE; cd build/$BUILD_TYPE; \
   cmake ../.. -DCMAKE_TOOLCHAIN_FILE="../../$TOOLCHAIN" \
