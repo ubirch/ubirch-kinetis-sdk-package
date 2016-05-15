@@ -32,7 +32,7 @@ in the SDK. Packages can then be found by other CMake projects using `find_packa
 > you need to create a build directory for every configuration and run `cmake` with an extra
 > argument `-DCMAKE_BUILD_TYPE=<build-type>` as well as `make`.
 
-## Cntents
+## Contents
 
 - `cmake`
   - `KinetisMiddleware.cmake` - macros to configure middleware targets
