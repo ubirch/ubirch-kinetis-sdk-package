@@ -11,7 +11,9 @@ macro(DetectKinetisSDK)
   if (NOT SDK_ROOT)
     message(FATAL_ERROR "Kinetis SDK not found, use '-DSDK_ROOT=<sdk-dir>' to set root path!")
   endif ()
-  set(KSDK_ROOT ${SDK_ROOT})
+
+  get_filename_component(SDK_ROOT_ABSOLUTE "${SDK_ROOT}" REALPATH)
+  set(KSDK_ROOT ${SDK_ROOT_ABSOLUTE})
   message(STATUS "Using Kinetis SDK: ${SDK_ROOT}")
 
   # identify MCU's available in selected SDK
