@@ -7,11 +7,11 @@ then BUILDS="Debug Release MinSizeRel RelWithDebInfo"
 else BUILDS=MinSizeRel
 fi
 # do an out-of-source build for all configurations
-[ -d build ] && rm -r build
+[ -d "build/$MCU" ] && rm -r "build/$MCU"
 for BUILD_TYPE in $BUILDS
 do
-  (mkdir -p build/$BUILD_TYPE; cd build/$BUILD_TYPE; \
-  cmake ../.. -DCMAKE_TOOLCHAIN_FILE="../../$TOOLCHAIN" \
+  (mkdir -p "build/$MCU/$BUILD_TYPE"; cd "build/$MCU/$BUILD_TYPE"; \
+  cmake ../../.. -DCMAKE_TOOLCHAIN_FILE="../../../$TOOLCHAIN" \
     -DSDK_ROOT="../$SDK_NAME" \
     -DMCU="$MCU" \
     -DCMAKE_BUILD_TYPE="$BUILD_TYPE"; \

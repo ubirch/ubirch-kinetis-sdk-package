@@ -14,4 +14,4 @@ AddKinetisSDK()
 AddKinetisMiddlewareMMCAU()
 
 # provide the package to other projects
-provide(PACKAGE KinetisSDK_${MCU} VERSION 2.0 TARGETS ${KSDK_TARGETS})
+provide(PACKAGE KinetisSDK MCU ${MCU} VERSION 2.0 TARGETS ${KSDK_TARGETS})

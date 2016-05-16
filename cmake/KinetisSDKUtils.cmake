@@ -24,7 +24,6 @@ macro(DetectKinetisSDK)
     LIST(APPEND _MCU_LIST "${_MCU}")
   endforeach ()
 
-  message(STATUS "Checking selected MCU: ${MCU}")
   # check if the MCU the user selected is in the SDK
   list(FIND _MCU_LIST "${MCU}" MCU_FOUND)
   if (NOT MCU)
