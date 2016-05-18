@@ -4,7 +4,7 @@ include(cmake/KinetisSDKUtils.cmake)
 include(cmake/KinetisSDK.cmake)
 include(cmake/KinetisMiddleware.cmake)
 
-enable_language(ASM)
+project(kinetis-sdk C CXX ASM)
 
 # detect Kinetis SDK and supported MCU
 DetectKinetisSDK(${SDK_ROOT} ${MCU})
