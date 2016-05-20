@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/sh 
 TOOLCHAIN=${TOOLCHAIN:-"../ubirch-arm-toolchain/cmake/ubirch-arm-gcc-toolchain.cmake"}
 SDK_NAME=SDK_2.0_MK82FN256xxx15
 SDK_ROOT=${SDK_ROOT:-"../ubirch-kinetis-sdk"}/$SDK_NAME
