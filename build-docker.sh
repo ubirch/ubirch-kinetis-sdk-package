@@ -1,5 +1,3 @@
-#!/bin/bash
-
 #!/bin/bash -x
 
 ARM_CONTAINER_VERSION="latest"
