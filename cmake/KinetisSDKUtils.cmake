@@ -46,7 +46,7 @@ macro(ConfigureMCU MCU)
   set(MCU_FLAGS -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16)
   set(MCU_C_FLAGS -DCPU_MK82FN256VDC15 ${MCU_FLAGS})
   set(MCU_LINKER_FLAGS ${MCU_FLAGS}
-    -T\"${MCU_FLASH_LD}\" -static --specs=nano.specs
+    -T'${MCU_FLASH_LD}' -static --specs=nano.specs
     -Wl,--gc-sections -Wl,-z,muldefs -Wl,--defsym=__stack_size__=0x2000 -Wl,--defsym=__heap_size__=0x2000
     )
 endmacro()
