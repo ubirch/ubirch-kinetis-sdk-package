@@ -48,10 +48,11 @@ macro(ConfigureMCU MCU)
 
   # The single quoted file name for the linker file does not work on Windows, but we need to escape spaces
   if (CMAKE_HOST_SYSTEM_NAME STREQUAL "Windows")
-    set(MCU_LINKER_FLAGS ${MCU_FLAGS} -T\"${MCU_FLASH_LD}\")
+    set(MCU_FLAGS ${MCU_FLAGS} -T\"${MCU_FLASH_LD}\")
   else()
-    set(MCU_LINKER_FLAGS ${MCU_FLAGS} -T'${MCU_FLASH_LD}')
+    set(MCU_FLAGS ${MCU_FLAGS} -T'${MCU_FLASH_LD}')
   endif()
+
   set(MCU_LINKER_FLAGS ${MCU_FLAGS} -static --specs=nano.specs -Wl,--gc-sections -Wl,-z,muldefs
           -Wl,--defsym=__stack_size__=0x2000 -Wl,--defsym=__heap_size__=0x2000
     )
