@@ -11,7 +11,11 @@ DetectKinetisSDK(${SDK_ROOT} ${MCU})
 ConfigureMCU(${MCU})
 
 AddKinetisSDK()
+AddKinetisMiddlewareDMAManager()
+AddKinetisMiddlewareFATFS()
 AddKinetisMiddlewareMMCAU()
+AddKinetisMiddlewareSDMMC()
+AddKinetisMiddlewareUSB()
 
 # provide the package to other projects
 provide(PACKAGE KinetisSDK MCU ${MCU} VERSION 2.0 TARGETS ${KSDK_TARGETS})

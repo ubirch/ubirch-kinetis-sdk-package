@@ -1,0 +1,21 @@
+if(MCU AND NOT (MCU STREQUAL @MCU@))
+  message(FATAL_ERROR "Kinetis SDK has been compiled for @MCU@, your project is set for ${MCU}, however!")
+endif()
+include("${CMAKE_CURRENT_LIST_DIR}/@PACKAGE_NAME@Targets.cmake")
+string(REPLACE ";" " " _tmp_ksdk_targets "@KSDK_TARGETS@")
+message(STATUS "Kinetis SDK: available targets: ${_tmp_ksdk_targets}")
+@USB_MIDDLEWARE_INCL@
+@USB_MIDDLEWARE_SRCS@
+if(USB_MIDDLEWARE_INC)
+  message(STATUS "USB: Kinetis SDK comes with source USB middleware support.")
+  message(STATUS "USB: Use USB_MIDDLEWARE_SRCS and USB_MIDDLEWARE_INC to add to your compilation.")
+  message(STATUS "USB: Create your own usb_device_config.h before compiling!")
+endif()
+@FATFS_MIDDLEWARE_INCL@
+@FATFS_MIDDLEWARE_SRCS@
+if(USB_MIDDLEWARE_INC)
+  message(STATUS "FATFS: Kinetis SDK comes with source FATFS middleware support.")
+  message(STATUS "FATFS: Use FATFS_MIDDLEWARE_SRCS and FATFS_MIDDLEWARE_INC to add to your compilation.")
+  message(STATUS "FATFS: Create your own ffconf.h before compiling!")
+endif()
+
