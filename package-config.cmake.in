@@ -6,10 +6,12 @@ string(REPLACE ";" " " _tmp_ksdk_targets "@KSDK_TARGETS@")
 message(STATUS "Kinetis SDK: available targets: ${_tmp_ksdk_targets}")
 @USB_MIDDLEWARE_INCL@
 @USB_MIDDLEWARE_SRCS@
+@USB_HOST_MIDDLEWARE_SRCS@
 if(USB_MIDDLEWARE_INC)
   message(STATUS "USB: Kinetis SDK comes with source USB middleware support.")
   message(STATUS "USB: Use USB_MIDDLEWARE_SRCS and USB_MIDDLEWARE_INC to add to your compilation.")
-  message(STATUS "USB: Create your own usb_device_config.h before compiling!")
+  message(STATUS "USB: For USB-host functionality, also add USB_HOST_MIDDLEWARE_SRCS to your compilation.")
+  message(STATUS "USB: Create your own usb_device_config.h (usb_host_config.h) before compiling!")
 endif()
 @FATFS_MIDDLEWARE_INCL@
 @FATFS_MIDDLEWARE_SRCS@

@@ -29,14 +29,14 @@ macro(AddKinetisMiddlewareFATFS)
 
     set(FATFS_MIDDLEWARE_SRCS
       "${KSDK_ROOT}/middleware/fatfs_0.11a/fsl_mmc_diskfsl_mmc_disk.c"
-#      "${KSDK_ROOT}/middleware/fatfs_0.11a/fsl_option/freertos_syscall.c"
-#      "${KSDK_ROOT}/middleware/fatfs_0.11a/fsl_option/ucosii_syscall.c"
-#      "${KSDK_ROOT}/middleware/fatfs_0.11a/fsl_option/ucosiii_syscall.c"
+      #      "${KSDK_ROOT}/middleware/fatfs_0.11a/fsl_option/freertos_syscall.c"
+      #      "${KSDK_ROOT}/middleware/fatfs_0.11a/fsl_option/ucosii_syscall.c"
+      #      "${KSDK_ROOT}/middleware/fatfs_0.11a/fsl_option/ucosiii_syscall.c"
       "${KSDK_ROOT}/middleware/fatfs_0.11a/fsl_ram_disk/fsl_ram_disk.c"
       "${KSDK_ROOT}/middleware/fatfs_0.11a/fsl_sd_disk/fsl_sd_disk.c"
       "${KSDK_ROOT}/middleware/fatfs_0.11a/fsl_sdspi_disk/fsl_sdspi_disk.c"
       "${KSDK_ROOT}/middleware/fatfs_0.11a/fsl_usb_disk/fsl_usb_disk_bm.c"
-#      "${KSDK_ROOT}/middleware/fatfs_0.11a/fsl_usb_disk/fsl_usb_disk_freertos.c"
+      #      "${KSDK_ROOT}/middleware/fatfs_0.11a/fsl_usb_disk/fsl_usb_disk_freertos.c"
       "${KSDK_ROOT}/middleware/fatfs_0.11a/option/cc932.c"
       "${KSDK_ROOT}/middleware/fatfs_0.11a/option/cc936.c"
       "${KSDK_ROOT}/middleware/fatfs_0.11a/option/cc949.c"
@@ -110,12 +110,18 @@ macro(AddKinetisMiddlewareUSB)
   file(GLOB USB_MIDDLEWARE ${KSDK_ROOT}/middleware/usb*)
   list(LENGTH USB_MIDDLEWARE HAS_USB_MIDDLEWARE)
   if (HAS_USB_MIDDLEWARE EQUAL 1)
-    message(STATUS "SDK has USB support, adding required sources to USB_MIDDLEWARE_SRCS/INC")
+    message(STATUS "SDK has USB support, adding required sources to USB_MIDDLEWARE_SRCS/INC + USB_HOST_MIDDLEWARE_SRCS")
 
     include_directories(${KSDK_ROOT}/middleware/usb_1.0.0/include)
     set(USB_MIDDLEWARE_SRCS
       "${KSDK_ROOT}/middleware/usb_1.0.0/device/usb_device_dci.c"
       "${KSDK_ROOT}/middleware/usb_1.0.0/device/usb_device_khci.c"
+      "${KSDK_ROOT}/middleware/usb_1.0.0/osa/usb_osa_bm.c"
+      #      "${KSDK_ROOT}/middleware/usb_1.0.0/osa/usb_osa_freertos.c"
+      #      "${KSDK_ROOT}/middleware/usb_1.0.0/osa/usb_osa_ucosii.c"
+      #      "${KSDK_ROOT}/middleware/usb_1.0.0/osa/usb_osa_ucosiii.c"
+      )
+    set(USB_HOST_MIDDLEWARE_SRCS
       "${KSDK_ROOT}/middleware/usb_1.0.0/host/class/usb_host_audio.c"
       "${KSDK_ROOT}/middleware/usb_1.0.0/host/class/usb_host_cdc.c"
       "${KSDK_ROOT}/middleware/usb_1.0.0/host/class/usb_host_hid.c"
@@ -128,16 +134,13 @@ macro(AddKinetisMiddlewareUSB)
       "${KSDK_ROOT}/middleware/usb_1.0.0/host/usb_host_framework.c"
       "${KSDK_ROOT}/middleware/usb_1.0.0/host/usb_host_hci.c"
       "${KSDK_ROOT}/middleware/usb_1.0.0/host/usb_host_khci.c"
-      "${KSDK_ROOT}/middleware/usb_1.0.0/osa/usb_osa_bm.c"
-#      "${KSDK_ROOT}/middleware/usb_1.0.0/osa/usb_osa_freertos.c"
-#      "${KSDK_ROOT}/middleware/usb_1.0.0/osa/usb_osa_ucosii.c"
-#      "${KSDK_ROOT}/middleware/usb_1.0.0/osa/usb_osa_ucosiii.c"
       )
-      set(USB_MIDDLEWARE_INC
-        ${KSDK_ROOT}/middleware/usb_1.0.0/include
-        ${KSDK_ROOT}/middleware/usb_1.0.0/device
-        ${KSDK_ROOT}/middleware/usb_1.0.0/osa)
+    set(USB_MIDDLEWARE_INC
+      ${KSDK_ROOT}/middleware/usb_1.0.0/include
+      ${KSDK_ROOT}/middleware/usb_1.0.0/device
+      ${KSDK_ROOT}/middleware/usb_1.0.0/osa)
     set(USB_MIDDLEWARE_INCL "set(USB_MIDDLEWARE_INC ${USB_MIDDLEWARE_INC} CACHE PATH \"\")")
     set(USB_MIDDLEWARE_SRCS "set(USB_MIDDLEWARE_SRCS ${USB_MIDDLEWARE_SRCS} CACHE PATH \"\")")
+    set(USB_HOST_MIDDLEWARE_SRCS "set(USB_HOST_MIDDLEWARE_SRCS ${USB_HOST_MIDDLEWARE_SRCS} CACHE PATH \"\")")
   endif ()
 endmacro()
