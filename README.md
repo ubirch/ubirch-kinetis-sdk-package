@@ -4,8 +4,10 @@ This is a [CMake](https://cmake.org) package for the [Kinetis SDK](kex.freescale
 creates a Kinetis SDK library target (ksdk20) as well as targets for some of the middleware (i.e. mmcau)
 found in the SDK. Packages can then be found by other CMake projects using `find_package()`.
 
-> &#9888; To use this package you will need to download the __Kinetis SDK 2.0__ from [kex.nxp.com]()
-> and tell CMake where to find it.
+> &#9888; __Attention__ <br/>
+> To use this package you will need to download the __Kinetis SDK 2.0__ from [kex.nxp.com]()
+> and tell CMake where to find it. The SDK is also available as a [ubirch-kinetis-sdk](http://github.com/ubirch/ubirch-kinetis-sdk) 
+> repository and used in our [ubirch-meta](http://github.com/ubirch/ubirch-meta) superbuild.
 
 ## Building
 
