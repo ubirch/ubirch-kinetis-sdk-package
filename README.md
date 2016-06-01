@@ -10,23 +10,23 @@ found in the SDK. Packages can then be found by other CMake projects using `find
 ## Building
 
 1. Checkout the [ubirch-arm-toolchain](https://github.com/ubirch/ubirch-arm-toolchain)
-2. Download the Kinetis SDK 2.0 ([kex.nxp.com]())
-3. Create a build directory:
+1. Download the Kinetis SDK 2.0 ([kex.nxp.com]())
+1. Create a build directory:
+
     ```
     mkdir build
     cd build
     ```
-3. Run cmake (providing the toolchain, the SDK root as well as the target MCU):
+1. Run cmake (providing the toolchain, the SDK root as well as the target MCU):
+
     ```
     cmake \
       -DCMAKE_TOOLCHAIN_FILE=<toolchain-dir>/cmake/ubirch-arm-toolchain.cmake \
       -DSDK_ROOT=<sdk-dir> \
       -DMCU=MK82F25615
     ```
-4. Run make
-    ```
-    make
-    ```
+    
+1. Run `make`
 
 > If you want to build all different configuration types (`Debug`, `Release`, `MinSizeRel`, ...)
 > you need to create a build directory for every configuration and run `cmake` with an extra
