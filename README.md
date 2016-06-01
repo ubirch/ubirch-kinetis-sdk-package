@@ -9,7 +9,7 @@ found in the SDK. Packages can then be found by other CMake projects using `find
 
 ## Building
 
-1. Checkout the [ubirch-arm-toolchain](https://gitlab.com/ubirch/ubirch-arm-toolchain)
+1. Checkout the [ubirch-arm-toolchain](https://github.com/ubirch/ubirch-arm-toolchain)
 2. Download the Kinetis SDK 2.0 ([kex.nxp.com]())
 3. Create a build directory:
     ```
