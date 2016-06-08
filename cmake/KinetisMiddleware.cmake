@@ -85,9 +85,10 @@ endmacro()
 
 # SDMMC middleware
 macro(AddKinetisMiddlewareSDMMC)
+  find_file(HAS_SDHC NAMES ${KSDK_ROOT}/devices/${MCU}/drivers/fsl_sdhc.h)
   file(GLOB SDMMC_MIDDLEWARE ${KSDK_ROOT}/middleware/sdmmc*)
   list(LENGTH SDMMC_MIDDLEWARE HAS_SDMMC_MIDDLEWARE)
-  if (HAS_SDMMC_MIDDLEWARE EQUAL 1)
+  if (HAS_SDHA AND HAS_SDMMC_MIDDLEWARE EQUAL 1)
     message(STATUS "SDK has SD/MMC support, adding library libsdmmc.a")
     set(TARGET_SDMMC sdmmc)
 
