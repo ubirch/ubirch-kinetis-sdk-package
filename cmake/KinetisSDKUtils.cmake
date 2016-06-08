@@ -42,7 +42,7 @@ endmacro()
 
 # configure special settings for the selected MCU
 macro(ConfigureMCU MCU)
-  if (MCU MATCHES "MK82FN25615")
+  if (MCU MATCHES "MK82F25615")
     get_filename_component(MCU_FLASH_LD "${KSDK_ROOT}/devices/${MCU}/gcc/MK82FN256xxx15_flash.ld" REALPATH)
     set(MCU_FLAGS -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16)
     set(MCU_C_FLAGS -MMD -MP -D__STARTUP_CLEAR_BSS -DCPU_MK82FN256VDC15 ${MCU_FLAGS})
@@ -50,7 +50,7 @@ macro(ConfigureMCU MCU)
   elseif (MCU MATCHES "MKL82Z7")
     get_filename_component(MCU_FLASH_LD "${KSDK_ROOT}/devices/${MCU}/gcc/MKL82Z128xxx7_flash.ld" REALPATH)
     set(MCU_FLAGS -mcpu=cortex-m0plus -mfloat-abi=soft)
-    set(MCU_C_FLAGS -MMD -MP -D__STARTUP_CLEAR_BSS -DCPU_MKL82Z128VLK7 ${MCU_FLAGS})
+    set(MCU_C_FLAGS -DPRINTF_ADVANCED_ENABLE -MMD -MP -D__STARTUP_CLEAR_BSS -DCPU_MKL82Z128VLK7 ${MCU_FLAGS})
     set(MCU_L_FLAGS -static --specs=nano.specs -Wl,--gc-sections -Wl,-z,muldefs -Wl,--defsym=__stack_size__=0x2000 -Wl,--defsym=__heap_size__=0x2000)
   endif ()
 
@@ -62,5 +62,4 @@ macro(ConfigureMCU MCU)
   endif ()
 
   set(MCU_LINKER_FLAGS ${MCU_FLAGS} ${MCU_L_FLAGS})
-
 endmacro()
