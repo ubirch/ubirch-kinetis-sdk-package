@@ -4,31 +4,28 @@ This is a [CMake](https://cmake.org) package for the [Kinetis SDK](kex.freescale
 creates a Kinetis SDK library target (ksdk20) as well as targets for some of the middleware (i.e. mmcau)
 found in the SDK. Packages can then be found by other CMake projects using `find_package()`.
 
-> &#9888; __Attention__ <br/>
-> To use this package you will need to download the __Kinetis SDK 2.0__ from [kex.nxp.com]()
-> and tell CMake where to find it. The SDK is also available as a [ubirch-kinetis-sdk](http://github.com/ubirch/ubirch-kinetis-sdk) 
+> ⚠ __Attention__ <br/>
+> To use this package you will need to download the __Kinetis SDK 2.0__ from [kex.nxp.com](http://kex.nxp.com)
+> and tell CMake where to find it. The SDK is also available as a [ubirch-kinetis-sdk](http://github.com/ubirch/ubirch-kinetis-sdk)
 > repository and used in our [ubirch-meta](http://github.com/ubirch/ubirch-meta) superbuild.
 
 ## Building
 
 1. Checkout the [ubirch-arm-toolchain](https://github.com/ubirch/ubirch-arm-toolchain)
-1. Download the Kinetis SDK 2.0 ([kex.nxp.com]())
-1. Create a build directory:
-
-    ```
-    mkdir build
-    cd build
-    ```
-1. Run cmake (providing the toolchain, the SDK root as well as the target MCU):
-
-    ```
-    cmake \
-      -DCMAKE_TOOLCHAIN_FILE=<toolchain-dir>/cmake/ubirch-arm-toolchain.cmake \
-      -DSDK_ROOT=<sdk-dir> \
-      -DMCU=MK82F25615
-    ```
-    
-1. Run `make`
+2. Download the Kinetis SDK 2.0 ([kex.nxp.com]())
+3. Create a build directory:
+  ```
+  mkdir build
+  cd build
+  ```
+4. Run cmake (providing the toolchain, the SDK root as well as the target MCU):
+  ```
+  cmake \
+    -DCMAKE_TOOLCHAIN_FILE=<toolchain-dir>/cmake/ubirch-arm-toolchain.cmake \
+    -DSDK_ROOT=<sdk-dir> \
+    -DMCU=MK82F25615
+  ```
+5. Run `make`
 
 > If you want to build all different configuration types (`Debug`, `Release`, `MinSizeRel`, ...)
 > you need to create a build directory for every configuration and run `cmake` with an extra
