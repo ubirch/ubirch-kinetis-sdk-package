@@ -12,7 +12,7 @@ found in the SDK. Packages can then be found by other CMake projects using `find
 ## Building
 
 1. Checkout the [ubirch-arm-toolchain](https://github.com/ubirch/ubirch-arm-toolchain)
-2. Download the Kinetis SDK 2.0 ([kex.nxp.com]())
+2. Download the [Kinetis SDK 2.x](http://kex.nxp.com)
 3. Create a build directory:
   ```
   mkdir build
