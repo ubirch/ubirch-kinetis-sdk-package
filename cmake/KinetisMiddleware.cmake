@@ -70,7 +70,13 @@ macro(AddKinetisMiddlewareMMCAU)
     message(STATUS "SDK has MMCAU support, adding library libmmcau.a")
     set(TARGET_MMCAU mmcau)
 
-    include_directories(${MMCAU_MIDDLEWARE}/asm-cm4-cm7/src)
+    include_directories(
+      ${MMCAU_MIDDLEWARE}
+      ${MMCAU_MIDDLEWARE}/asm-cm4-cm7/src
+      ${KSDK_ROOT}/CMSIS/Include
+      ${KSDK_ROOT}/devices/${MCU}
+      ${KSDK_ROOT}/devices/${MCU}/drivers
+    )
     add_library(${TARGET_MMCAU} STATIC
       "${MMCAU_MIDDLEWARE}/asm-cm4-cm7/src/cau2_defines.hdr"
       "${MMCAU_MIDDLEWARE}/asm-cm4-cm7/src/mmcau_aes_functions.s"
@@ -78,6 +84,7 @@ macro(AddKinetisMiddlewareMMCAU)
       "${MMCAU_MIDDLEWARE}/asm-cm4-cm7/src/mmcau_md5_functions.s"
       "${MMCAU_MIDDLEWARE}/asm-cm4-cm7/src/mmcau_sha1_functions.s"
       "${MMCAU_MIDDLEWARE}/asm-cm4-cm7/src/mmcau_sha256_functions.s"
+      "${MMCAU_MIDDLEWARE}/fsl_mmcau.c"
       )
     target_include_directories(${TARGET_MMCAU} INTERFACE ${MMCAU_MIDDLEWARE})
     target_compile_options(${TARGET_MMCAU} PRIVATE ${MCU_C_FLAGS})
