@@ -25,9 +25,9 @@ macro(AddKinetisMiddlewareFATFS)
   file(GLOB FATFS_MIDDLEWARE ${KSDK_ROOT}/middleware/fatfs*)
   list(LENGTH FATFS_MIDDLEWARE HAS_FATFS_MIDDLEWARE)
   if (HAS_FATFS_MIDDLEWARE EQUAL 1)
-    message(STATUS "SDK has FATFS support, adding required sources to FATFS_MIDDLEWARE_SRCS/INC")
+    message(STATUS "SDK has FATFS support, adding required sources to FATFS_MIDDLEWARE_SRC/INC")
 
-    set(FATFS_MIDDLEWARE_SRCS
+    set(_FATFS_MIDDLEWARE_SRC
       #      "${FATFS_MIDDLEWARE}/src/fsl_mmc_disk/fsl_mmc_disk.c"
       #      "${FATFS_MIDDLEWARE}/fsl_option/freertos_syscall.c"
       #      "${FATFS_MIDDLEWARE}/fsl_option/ucosii_syscall.c"
@@ -48,7 +48,7 @@ macro(AddKinetisMiddlewareFATFS)
       "${FATFS_MIDDLEWARE}/src/ff.c"
       )
 
-    set(FATFS_MIDDLEWARE_INC
+    set(_FATFS_MIDDLEWARE_INC
       "${FATFS_MIDDLEWARE}/src/fsl_mmc_disk"
       "${FATFS_MIDDLEWARE}/src/fsl_ram_disk"
       "${FATFS_MIDDLEWARE}/src/fsl_sd_disk"
@@ -57,8 +57,8 @@ macro(AddKinetisMiddlewareFATFS)
       "${FATFS_MIDDLEWARE}/src"
       )
 
-    set(FATFS_MIDDLEWARE_INCL "set(FATFS_MIDDLEWARE_INC ${FATFS_MIDDLEWARE_INC} CACHE PATH \"\")")
-    set(FATFS_MIDDLEWARE_SRCS "set(FATFS_MIDDLEWARE_SRCS ${FATFS_MIDDLEWARE_SRCS} CACHE PATH \"\")")
+    set(FATFS_MIDDLEWARE_INCL "set(FATFS_MIDDLEWARE_INC ${_FATFS_MIDDLEWARE_INC} CACHE PATH \"\")")
+    set(FATFS_MIDDLEWARE_SRCS "set(FATFS_MIDDLEWARE_SRC ${_FATFS_MIDDLEWARE_SRC} CACHE PATH \"\")")
   endif ()
 endmacro()
 
@@ -121,10 +121,10 @@ macro(AddKinetisMiddlewareUSB)
   file(GLOB USB_MIDDLEWARE ${KSDK_ROOT}/middleware/usb*)
   list(LENGTH USB_MIDDLEWARE HAS_USB_MIDDLEWARE)
   if (HAS_USB_MIDDLEWARE EQUAL 1)
-    message(STATUS "SDK has USB support, adding required sources to USB_MIDDLEWARE_SRCS/INC + USB_HOST_MIDDLEWARE_SRCS")
+    message(STATUS "SDK has USB support, adding required sources to USB_MIDDLEWARE_SRC/INC + USB_HOST_MIDDLEWARE_SRC")
 
     include_directories(${USB_MIDDLEWARE}/include)
-    set(USB_MIDDLEWARE_SRCS
+    set(_USB_MIDDLEWARE_SRC
       "${USB_MIDDLEWARE}/device/usb_device_dci.c"
       "${USB_MIDDLEWARE}/device/usb_device_khci.c"
       "${USB_MIDDLEWARE}/osa/usb_osa_bm.c"
@@ -132,7 +132,7 @@ macro(AddKinetisMiddlewareUSB)
       #      "${USB_MIDDLEWARE}/osa/usb_osa_ucosii.c"
       #      "${USB_MIDDLEWARE}/osa/usb_osa_ucosiii.c"
       )
-    set(USB_HOST_MIDDLEWARE_SRCS
+    set(_USB_HOST_MIDDLEWARE_SRC
       "${USB_MIDDLEWARE}/host/class/usb_host_audio.c"
       "${USB_MIDDLEWARE}/host/class/usb_host_cdc.c"
       "${USB_MIDDLEWARE}/host/class/usb_host_hid.c"
@@ -146,12 +146,12 @@ macro(AddKinetisMiddlewareUSB)
       "${USB_MIDDLEWARE}/host/usb_host_hci.c"
       "${USB_MIDDLEWARE}/host/usb_host_khci.c"
       )
-    set(USB_MIDDLEWARE_INC
+    set(_USB_MIDDLEWARE_INC
       ${USB_MIDDLEWARE}/include
       ${USB_MIDDLEWARE}/device
       ${USB_MIDDLEWARE}/osa)
-    set(USB_MIDDLEWARE_INCL "set(USB_MIDDLEWARE_INC ${USB_MIDDLEWARE_INC} CACHE PATH \"\")")
-    set(USB_MIDDLEWARE_SRCS "set(USB_MIDDLEWARE_SRCS ${USB_MIDDLEWARE_SRCS} CACHE PATH \"\")")
-    set(USB_HOST_MIDDLEWARE_SRCS "set(USB_HOST_MIDDLEWARE_SRCS ${USB_HOST_MIDDLEWARE_SRCS} CACHE PATH \"\")")
+    set(USB_MIDDLEWARE_INCL "set(USB_MIDDLEWARE_INC ${_USB_MIDDLEWARE_INC} CACHE PATH \"\")")
+    set(USB_MIDDLEWARE_SRCS "set(USB_MIDDLEWARE_SRC ${_USB_MIDDLEWARE_SRCS} CACHE PATH \"\")")
+    set(USB_HOST_MIDDLEWARE_SRCS "set(USB_HOST_MIDDLEWARE_SRC ${_USB_HOST_MIDDLEWARE_SRC} CACHE PATH \"\")")
   endif ()
 endmacro()
