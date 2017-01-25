@@ -13,7 +13,7 @@ macro(AddKinetisMiddlewareDMAManager)
       "${DMAMGR_MIDDLEWARE}/fsl_dma_manager.c"
       )
     target_include_directories(${TARGET_DMAMGR} INTERFACE ${DMAMGR_MIDDLEWARE})
-    target_link_libraries(${TARGET_DMAMGR} ksdk20)
+    target_link_libraries(${TARGET_DMAMGR} ksdk2)
     target_compile_options(${TARGET_DMAMGR} PRIVATE ${MCU_C_FLAGS})
 
     list(APPEND KSDK_TARGETS ${TARGET_DMAMGR})
@@ -110,7 +110,7 @@ macro(AddKinetisMiddlewareSDMMC)
       "${SDMMC_MIDDLEWARE}/src/fsl_sdspi.c"
       )
     target_include_directories(${TARGET_SDMMC} INTERFACE ${SDMMC_MIDDLEWARE}/inc)
-    target_link_libraries(${TARGET_SDMMC} ksdk20)
+    target_link_libraries(${TARGET_SDMMC} ksdk2)
     target_compile_options(${TARGET_SDMMC} PRIVATE ${MCU_C_FLAGS})
 
     list(APPEND KSDK_TARGETS ${TARGET_SDMMC})
